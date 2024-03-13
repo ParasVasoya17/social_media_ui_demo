@@ -41,7 +41,7 @@ class HomeView extends GetView<HomeController> {
                 circlePadding: 2.w,
                 displayProgress: true,
                 circleRadius: 35.r,
-                storyStatusBarColor: Colors.indigo,
+                storyStatusBarColor: Colors.transparent,
                 fullpageUnisitedColor: Colors.white,
                 fullpageVisitedColor: Colors.blue,
                 storyCircleTextStyle: TextStyle(fontSize: 12.sp),
