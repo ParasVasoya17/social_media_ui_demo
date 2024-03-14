@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
+import 'package:social_media_ui_demo/app/models/post_model.dart';
+import 'package:social_media_ui_demo/app/routes/app_pages.dart';
+import 'package:social_media_ui_demo/app/widgets/common_bottomSheet.dart';
 import 'package:social_media_ui_demo/app/widgets/utils.dart';
 import 'package:stories_for_flutter/stories_for_flutter.dart';
 import '../controllers/home_controller.dart';
@@ -16,6 +19,7 @@ class HomeView extends GetView<HomeController> {
       init: HomeController(),
       builder: (controller) {
         return Scaffold(
+          resizeToAvoidBottomInset: false,
           appBar: PreferredSize(
               preferredSize: Size.fromHeight(MediaQuery.of(context).size.height),
               child: Padding(
@@ -242,6 +246,7 @@ class HomeView extends GetView<HomeController> {
                 controller: controller.tabController,
                 isScrollable: true,
                 padding: EdgeInsets.only(left: 10.w),
+                labelPadding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 2.h),
                 tabAlignment: TabAlignment.start,
                 unselectedLabelColor: Colors.black,
                 labelColor: Colors.blue,
@@ -342,14 +347,28 @@ class HomeView extends GetView<HomeController> {
                                   style: TextStyle(fontSize: 15.sp),
                                 ),
                                 20.horizontalSpace,
-                                Icon(
-                                  Icons.messenger_outline,
-                                  size: 25.w,
-                                ),
-                                10.horizontalSpace,
-                                Text(
-                                  "${controller.smSpaceTab.data![index].likes.toString()} Comments",
-                                  style: TextStyle(fontSize: 15.sp),
+                                GestureDetector(
+                                  onTap: () {
+                                    commentBottomSheet(
+                                      context,
+                                      controller.smSpaceTab.data![index].comments,
+                                      controller,
+                                      controller.commentController,
+                                    ).then((value) => controller.commentController.clear());
+                                  },
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.messenger_outline,
+                                        size: 25.w,
+                                      ),
+                                      10.horizontalSpace,
+                                      Text(
+                                        "${controller.smSpaceTab.data![index].comments?.length.toString()} Comments",
+                                        style: TextStyle(fontSize: 15.sp),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                                 const Spacer(),
                                 Icon(
@@ -439,14 +458,28 @@ class HomeView extends GetView<HomeController> {
                                   style: TextStyle(fontSize: 15.sp),
                                 ),
                                 20.horizontalSpace,
-                                Icon(
-                                  Icons.messenger_outline,
-                                  size: 25.w,
-                                ),
-                                10.horizontalSpace,
-                                Text(
-                                  "${controller.competitionTab.data![index].likes.toString()} Comments",
-                                  style: TextStyle(fontSize: 15.sp),
+                                GestureDetector(
+                                  onTap: () {
+                                    commentBottomSheet(
+                                      context,
+                                      controller.competitionTab.data![index].comments,
+                                      controller,
+                                      controller.commentController,
+                                    ).then((value) => controller.commentController.clear());
+                                  },
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.messenger_outline,
+                                        size: 25.w,
+                                      ),
+                                      10.horizontalSpace,
+                                      Text(
+                                        "${controller.competitionTab.data![index].comments?.length.toString()} Comments",
+                                        style: TextStyle(fontSize: 15.sp),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                                 const Spacer(),
                                 Icon(
@@ -536,14 +569,28 @@ class HomeView extends GetView<HomeController> {
                                   style: TextStyle(fontSize: 15.sp),
                                 ),
                                 20.horizontalSpace,
-                                Icon(
-                                  Icons.messenger_outline,
-                                  size: 25.w,
-                                ),
-                                10.horizontalSpace,
-                                Text(
-                                  "${controller.mentorsTab.data![index].likes.toString()} Comments",
-                                  style: TextStyle(fontSize: 15.sp),
+                                GestureDetector(
+                                  onTap: () {
+                                    commentBottomSheet(
+                                      context,
+                                      controller.mentorsTab.data![index].comments,
+                                      controller,
+                                      controller.commentController,
+                                    ).then((value) => controller.commentController.clear());
+                                  },
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.messenger_outline,
+                                        size: 25.w,
+                                      ),
+                                      10.horizontalSpace,
+                                      Text(
+                                        "${controller.mentorsTab.data![index].comments?.length.toString()} Comments",
+                                        style: TextStyle(fontSize: 15.sp),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                                 const Spacer(),
                                 Icon(
@@ -633,14 +680,28 @@ class HomeView extends GetView<HomeController> {
                                   style: TextStyle(fontSize: 15.sp),
                                 ),
                                 20.horizontalSpace,
-                                Icon(
-                                  Icons.messenger_outline,
-                                  size: 25.w,
-                                ),
-                                10.horizontalSpace,
-                                Text(
-                                  "${controller.competitionsTab1.data![index].likes.toString()} Comments",
-                                  style: TextStyle(fontSize: 15.sp),
+                                GestureDetector(
+                                  onTap: () {
+                                    commentBottomSheet(
+                                      context,
+                                      controller.competitionsTab1.data![index].comments,
+                                      controller,
+                                      controller.commentController,
+                                    ).then((value) => controller.commentController.clear());
+                                  },
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.messenger_outline,
+                                        size: 25.w,
+                                      ),
+                                      10.horizontalSpace,
+                                      Text(
+                                        "${controller.competitionsTab1.data![index].comments?.length.toString()} Comments",
+                                        style: TextStyle(fontSize: 15.sp),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                                 const Spacer(),
                                 Icon(
@@ -730,14 +791,28 @@ class HomeView extends GetView<HomeController> {
                                   style: TextStyle(fontSize: 15.sp),
                                 ),
                                 20.horizontalSpace,
-                                Icon(
-                                  Icons.messenger_outline,
-                                  size: 25.w,
-                                ),
-                                10.horizontalSpace,
-                                Text(
-                                  "${controller.mentorsTab1.data![index].likes.toString()} Comments",
-                                  style: TextStyle(fontSize: 15.sp),
+                                GestureDetector(
+                                  onTap: () {
+                                    commentBottomSheet(
+                                      context,
+                                      controller.mentorsTab1.data![index].comments,
+                                      controller,
+                                      controller.commentController,
+                                    ).then((value) => controller.commentController.clear());
+                                  },
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.messenger_outline,
+                                        size: 25.w,
+                                      ),
+                                      10.horizontalSpace,
+                                      Text(
+                                        "${controller.mentorsTab1.data![index].comments?.length.toString()} Comments",
+                                        style: TextStyle(fontSize: 15.sp),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                                 const Spacer(),
                                 Icon(
@@ -763,5 +838,166 @@ class HomeView extends GetView<HomeController> {
         );
       },
     );
+  }
+
+  Future commentBottomSheet(context, List<String>? list, HomeController controller, TextEditingController textEditingController) {
+    return CommonBottomSheet(
+        context: context,
+        child: GetBuilder<HomeController>(
+          builder: (controller) {
+            return SizedBox(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              child: GestureDetector(
+                onTap: () {
+                  FocusManager.instance.primaryFocus?.unfocus();
+                },
+                child: Scaffold(
+                  resizeToAvoidBottomInset: true,
+                  appBar: PreferredSize(
+                      preferredSize: Size.fromHeight(80.h),
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 15.w, right: 15.w, top: 40.h),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            GestureDetector(
+                                onTap: () {
+                                  FocusManager.instance.primaryFocus?.unfocus();
+                                  Get.back();
+                                },
+                                child: Icon(
+                                  Icons.arrow_back,
+                                  size: 25.w,
+                                )),
+                            Text(
+                              'Comments',
+                              style: TextStyle(fontSize: 25.sp, color: Colors.black),
+                            ),
+                            Container(
+                              width: 25.w,
+                            ),
+                          ],
+                        ),
+                      )),
+                  body: Column(
+                    children: [
+                      Expanded(
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          physics: const BouncingScrollPhysics(),
+                          itemCount: list?.length,
+                          itemBuilder: (context, index) {
+                            return Container(
+                              width: double.infinity,
+                              padding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 5.w),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Column(
+                                        children: [
+                                          Container(
+                                            margin: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
+                                            decoration: BoxDecoration(
+                                              border: Border.all(color: Colors.black38, width: 1.w),
+                                              shape: BoxShape.circle,
+                                            ),
+                                            height: 50.w,
+                                            width: 50.w,
+                                            child: CircleAvatar(
+                                              backgroundImage: NetworkImage(
+                                                  "https://images.unsplash.com/photo-1575936123452-b67c3203c357?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        width: MediaQuery.of(context).size.width * 0.50,
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "Unknown User",
+                                              style: TextStyle(fontSize: 16.sp),
+                                            ),
+                                            4.verticalSpace,
+                                            Text(
+                                              list![index],
+                                              softWrap: true,
+                                              overflow: TextOverflow.visible,
+                                              style: TextStyle(fontSize: 14.sp),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Icon(
+                                    Icons.more_vert,
+                                    size: 25.w,
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                      4.verticalSpace,
+                      Row(
+                        children: [
+                          20.horizontalSpace,
+                          Expanded(
+                            child: TextField(
+                              controller: textEditingController,
+                              style: TextStyle(fontSize: 18.sp),
+                              decoration: InputDecoration(
+                                hintText: 'Comment',
+                                hintStyle: TextStyle(fontSize: 18.sp),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(color: Colors.grey),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                    color: Colors.black,
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                errorBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                    color: Colors.red,
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                            ),
+                          ),
+                          20.horizontalSpace,
+                          GestureDetector(
+                            onTap: () {
+                              list?.add(textEditingController.text);
+                              textEditingController.clear();
+                              controller.update();
+                            },
+                            child: Icon(
+                              Icons.send,
+                              size: 25.w,
+                            ),
+                          ),
+                          10.horizontalSpace,
+                        ],
+                      ),
+                      20.verticalSpace,
+                    ],
+                  ),
+                ),
+              ),
+            );
+          },
+        ));
   }
 }

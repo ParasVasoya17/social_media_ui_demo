@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:social_media_ui_demo/app/models/post_model.dart';
 
 class HomeController extends GetxController with GetTickerProviderStateMixin {
+  TextEditingController commentController = TextEditingController();
   PostModel mentorsTab1 = PostModel(
     data: [
       Data(
@@ -11,7 +12,7 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
           image:
               "https://images.unsplash.com/photo-1566438480900-0609be27a4be?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aW1hZ2V8ZW58MHx8MHx8fDA%3D",
           name: "Mentor Tab One",
-          comments: 0,
+          comments: [],
           likes: 0,
           isLiked: false,
           userName: "mentor_tab1",
@@ -23,7 +24,7 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
           name: "Mentor Tab Two",
           image:
               "https://images.unsplash.com/photo-1574169207511-e21a21c8075a?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGltYWdlfGVufDB8fDB8fHww",
-          comments: 0,
+          comments: [],
           likes: 0,
           isLiked: false,
           userName: "mentor_tab2",
@@ -40,7 +41,7 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
           name: "Competitions Tab One",
           image:
               "https://plus.unsplash.com/premium_photo-1687382111414-7b87afa5da34?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGltYWdlfGVufDB8fDB8fHww",
-          comments: 0,
+          comments: [],
           likes: 0,
           isLiked: false,
           userName: "competitions_tab1",
@@ -52,7 +53,7 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
           image:
               "https://plus.unsplash.com/premium_photo-1682513184135-b7b9b76fb4eb?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGltYWdlfGVufDB8fDB8fHww",
           name: "Competitions Tab Two",
-          comments: 0,
+          comments: [],
           likes: 0,
           isLiked: false,
           userName: "competitions_tab2",
@@ -68,7 +69,7 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
           image:
               "https://images.unsplash.com/photo-1547219469-75c19c0bd220?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fGltYWdlfGVufDB8fDB8fHww",
           name: "Tab Mentor One",
-          comments: 0,
+          comments: [],
           likes: 0,
           isLiked: false,
           userName: "tab_mentor1",
@@ -80,7 +81,7 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
           name: "Tab Mentor Two",
           image:
               "https://images.unsplash.com/photo-1578589318433-39b5de440c3f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzF8fGltYWdlfGVufDB8fDB8fHww",
-          comments: 0,
+          comments: [],
           likes: 0,
           isLiked: false,
           userName: "tab_mentor2",
@@ -96,7 +97,7 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
           image:
               "https://images.unsplash.com/photo-1592311675507-00555370829d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzZ8fGltYWdlfGVufDB8fDB8fHww",
           name: "Competition User One",
-          comments: 0,
+          comments: [],
           likes: 0,
           isLiked: false,
           userName: "competition_user1",
@@ -108,7 +109,7 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
           name: "Competition User One",
           image:
               "https://images.unsplash.com/photo-1574169207372-88518bd26f2d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDN8fGltYWdlfGVufDB8fDB8fHww",
-          comments: 0,
+          comments: [],
           likes: 0,
           isLiked: false,
           userName: "competition_user2",
@@ -122,7 +123,7 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
           profileImage: "https://images.pexels.com/photos/4126743/pexels-photo-4126743.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
           name: "Paras Vasoya",
           image: "https://images.pexels.com/photos/159304/network-cable-ethernet-computer-159304.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-          comments: 0,
+          comments: [],
           likes: 0,
           isLiked: false,
           userName: "paras_vasoya",
@@ -132,7 +133,7 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
           profileImage: "https://images.indianexpress.com/2024/02/shark-tank-aman-gupta.jpg",
           image: "https://imgeng.jagran.com/images/2023/mar/Aman%20Gupta%20on%20future%20of%20shark%20Tank%20India1678018507500.jpg",
           name: "Aman Gupta",
-          comments: 0,
+          comments: [],
           likes: 0,
           isLiked: false,
           userName: "aman_gupta",
@@ -142,7 +143,7 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
           profileImage: "https://images.pexels.com/photos/4458418/pexels-photo-4458418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
           image: "https://images.pexels.com/photos/2911364/pexels-photo-2911364.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
           name: "Prince Gupta",
-          comments: 0,
+          comments: [],
           likes: 0,
           isLiked: false,
           userName: "prince_gupta",
