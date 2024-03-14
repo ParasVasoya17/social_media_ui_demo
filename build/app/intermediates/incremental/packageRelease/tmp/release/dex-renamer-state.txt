@@ -1,4 +1,0 @@
-#Thu Mar 14 15:43:44 IST 2024
-base.0=/Users/parasvasoya/Downloads/social_media_ui_demo/build/app/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-path.0=classes.dex
-renamed.0=classes.dex
